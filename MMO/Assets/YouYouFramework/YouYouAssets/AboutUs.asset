@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f3a9213d90b254eb81d4f09799abf0, type: 3}
   m_Name: AboutUs
   m_EditorClassIdentifier: 
-  Icon: {fileID: 2800000, guid: ea19a7db6fd7d4e4fac6ebf36fa9e2a8, type: 3}
+  Icon: {fileID: 2800000, guid: da641977242115447a56183f1061457e, type: 3}
   Name: YouYouFramework
   Version: 1.1
-  Author: "\u6731\u660E\u661F"
+  Author: 
   Contact: zhumingxing@cyou-inc.com
   MacroSettings: "\u5B8F\u8BBE\u7F6E\u529F\u80FD\uFF0C\u80FD\u591F\u65B9\u4FBF\u8FDB\u884C\u5168\u5C40\u8BBE\u7F6E"
   ParamsSettings: "\u9879\u76EE\u542F\u52A8\u4F1A\u6709\u4E2A\u8BBE\u5907\u7B49\u7EA7\u53C2\u6570\uFF08\u9AD8

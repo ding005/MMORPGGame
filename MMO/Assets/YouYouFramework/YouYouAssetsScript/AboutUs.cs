@@ -29,7 +29,7 @@ public class AboutUs : ScriptableObject
     [VerticalGroup("AboutUs/Split/Right")]
     //[DisplayAsString]
     [LabelText("作者")]
-    public string Author = "朱明星";
+    public string Author = "未知";
 
     [VerticalGroup("AboutUs/Split/Right")]
     //[DisplayAsString]
