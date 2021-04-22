@@ -1,0 +1,140 @@
+-- Create By 悠游课堂 http://www.u3dol.com zmx000
+ChapterDBModel = { }
+
+local this = ChapterDBModel;
+
+local chapterTable = { }; --定义表格
+local chapterTableDic = { }; --定义表格字典
+
+local dataTableName = "Chapter";
+local currColumns = 8;
+local isAlreadyLoadTableInCSharp = false;
+local lastUseTime = 0;
+local loadType = 0; --读取方式0=从lua文件读取 1=从c#已有数据加载
+
+function ChapterDBModel.LoadList()
+    GameInit.AddTotalLoadTableCount();
+    if (loadType == 0) then
+        local arr = ChapterEntity.GetArr();
+        for i = 1, arr.Len do
+            local item = arr.ByIdx[i]; --拿到索引数据
+            local chapterEntity = ChapterEntity.NewFromArrItem(item);
+            chapterTable[#chapterTable + 1] = chapterEntity;
+            chapterTableDic[chapterEntity.Id] = chapterEntity;
+        end
+        GameInit.LoadOneTableComplete();
+    else
+        --检查这个表在c#中是否已经加载
+        if (GameEntry.DataTable:CheckAlreadyLoadTable(dataTableName, currColumns)) then
+            isAlreadyLoadTableInCSharp = true;
+            GameInit.LoadOneTableComplete();
+        else
+            print("table load fail"..dataTableName);
+            GameInit.LoadOneTableComplete();
+        end
+    end
+end
+
+function ChapterDBModel.GetList()
+    --如果和c#不一致 说明自己会加载
+    if (isAlreadyLoadTableInCSharp == false) then
+        return chapterTable;
+    end
+
+    lastUseTime = Time.time;
+    --循环c#的表
+    local lstCSharp = GameEntry.DataTable.ChapterList:GetList();
+    local len = lstCSharp.Count - 1;
+    local chapterEntityCSharp = nil;
+    local chapterEntity = nil;
+
+    for i = 0, len, 1 do
+        chapterEntityCSharp = lstCSharp[i];
+        chapterEntity = this.GetEntityFromCSharp(chapterEntityCSharp.Id, chapterEntityCSharp);
+        this.AddToTable(chapterEntity);
+    end
+    lstCSharp = nil;
+    len = nil;
+    chapterEntityCSharp = nil;
+    chapterEntity = nil;
+
+    return chapterTable;
+end
+
+function ChapterDBModel.GetEntity(id)
+    local ret = this.GetEntityInner(id);
+    lastUseTime = Time.time;
+
+    --如果在lua中存在 或者和c#不一致 直接返回
+    if (ret ~= nil or isAlreadyLoadTableInCSharp == false) then
+        return ret;
+    end
+
+    --去c#中查询
+    ret = this.GetEntityFromCSharp(id);
+    if (ret ~= nil) then
+        this.AddToTable(ret);
+    end
+    return ret;
+end
+
+function ChapterDBModel.GetEntityInner(id)
+    return chapterTableDic[id];
+end
+
+function ChapterDBModel.AddToTable(entity)
+    if (this.GetEntityInner(entity.Id) == nil) then
+        chapterTable[#chapterTable + 1] = entity;
+        chapterTableDic[entity.Id] = entity;
+    end
+end
+
+function ChapterDBModel.GetEntityFromCSharp(id, cSharpEntity)
+    local chapterEntityCSharp = (cSharpEntity ~= nil and cSharpEntity or GameEntry.DataTable.ChapterList:GetEntityValue(id));
+    if (chapterEntityCSharp == nil) then
+        return nil;
+    end
+
+    local chapterEntity = nil;
+    if(cSharpEntity ~= nil) then
+        --说明是通过循环列表时候获取单个对象
+        chapterEntity = this.GetEntityInner(id);
+        if(chapterEntity ~= nil) then
+            return chapterEntity;
+        end
+    end
+
+    local BranchLevelId = {};
+    local len = chapterEntityCSharp.BranchLevelIdLength - 1;
+    for i = 0, len, 1 do
+        BranchLevelId[#BranchLevelId+1] = chapterEntityCSharp:BranchLevelId(i)
+    end
+
+    local BranchLevelName = {};
+    local len = chapterEntityCSharp.BranchLevelNameLength - 1;
+    for i = 0, len, 1 do
+        BranchLevelName[#BranchLevelName+1] = chapterEntityCSharp:BranchLevelName(i)
+    end
+
+    chapterEntity = ChapterEntity.New(
+        chapterEntityCSharp.Id,
+        chapterEntityCSharp.ChapterName,
+        chapterEntityCSharp.GameLevelCount,
+        chapterEntityCSharp.BG_Pic,
+        BranchLevelId,
+        BranchLevelName,
+        chapterEntityCSharp.Uvx,
+        chapterEntityCSharp.Uvy
+        );
+    chapterEntityCSharp = nil;
+    BranchLevelId = nil;
+    BranchLevelName = nil;
+    return chapterEntity;
+end
+
+function ChapterDBModel.CheckGC()
+    if (isAlreadyLoadTableInCSharp and Time.time > lastUseTime + GameEntry.Lua.LuaDataTableLife and #chapterTable > 0) then
+        chapterTable = { };
+        chapterTableDic = { };
+    end
+end

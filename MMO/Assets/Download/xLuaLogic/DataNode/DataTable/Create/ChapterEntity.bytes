@@ -1,0 +1,49 @@
+-- Create By 悠游课堂 http://www.u3dol.com zmx000
+ChapterEntity = { Id = 0, ChapterName = "", GameLevelCount = 0, BG_Pic = "", BranchLevelId = {}, BranchLevelName = {}, Uvx = 0, Uvy = 0 }
+
+ChapterEntity.__index = ChapterEntity;
+
+function ChapterEntity.New(Id, ChapterName, GameLevelCount, BG_Pic, BranchLevelId, BranchLevelName, Uvx, Uvy)
+    local self = { };
+    setmetatable(self, ChapterEntity);
+
+    self.Id = Id;
+    self.ChapterName = ChapterName;
+    self.GameLevelCount = GameLevelCount;
+    self.BG_Pic = BG_Pic;
+    self.BranchLevelId = BranchLevelId;
+    self.BranchLevelName = BranchLevelName;
+    self.Uvx = Uvx;
+    self.Uvy = Uvy;
+
+    return self;
+end
+
+function ChapterEntity.NewFromArrItem(item)
+    local self = { };
+    setmetatable(self, ChapterEntity);
+
+    self.Id = item[1];
+    self.ChapterName = item[2];
+    self.GameLevelCount = item[3];
+    self.BG_Pic = item[4];
+    self.BranchLevelId = item[5];
+    self.BranchLevelName = item[6];
+    self.Uvx = item[7];
+    self.Uvy = item[8];
+
+    return self;
+end
+
+local arr =
+{
+    ByIdx = {
+        {1, "江湖新手", 10, "02", {1, 2}, {"分支1", "分支2"}, 1, 1},
+        {2, "一代大侠", 10, "02", {11, 12}, {"分支11", "分支12"}, 1, 1}
+    },
+    Len = 2
+}
+
+function ChapterEntity.GetArr()
+    return arr;
+end
