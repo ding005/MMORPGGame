@@ -75,7 +75,7 @@ public static partial class Sys_CodeListExt
         {
             return sys_code.Value;
         }
-        return default;
+        return default(Sys_Code);
     }
 
     /// <summary>

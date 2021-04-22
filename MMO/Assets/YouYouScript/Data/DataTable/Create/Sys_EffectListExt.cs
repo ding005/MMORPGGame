@@ -75,7 +75,7 @@ public static partial class Sys_EffectListExt
         {
             return sys_effect.Value;
         }
-        return default;
+        return default(Sys_Effect);
     }
 
     /// <summary>

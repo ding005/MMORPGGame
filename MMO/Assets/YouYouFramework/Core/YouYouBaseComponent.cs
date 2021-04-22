@@ -11,7 +11,7 @@ namespace YouYou
             base.OnAwake();
 
             //把自己加入基础组件列表
-            GameEntry.RegisterBaseComponent(this);
+            //GameEntry.RegisterBaseComponent(this);
         }
     }
 }

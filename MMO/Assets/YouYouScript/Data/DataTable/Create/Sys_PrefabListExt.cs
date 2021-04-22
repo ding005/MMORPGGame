@@ -75,7 +75,7 @@ public static partial class Sys_PrefabListExt
         {
             return sys_prefab.Value;
         }
-        return default;
+        return default(Sys_Prefab);
     }
 
     /// <summary>

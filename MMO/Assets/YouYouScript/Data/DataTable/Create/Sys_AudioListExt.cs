@@ -75,7 +75,7 @@ public static partial class Sys_AudioListExt
         {
             return sys_audio.Value;
         }
-        return default;
+        return default(Sys_Audio);
     }
 
     /// <summary>

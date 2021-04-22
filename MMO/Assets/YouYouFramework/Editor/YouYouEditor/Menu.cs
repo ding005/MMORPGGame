@@ -15,60 +15,28 @@ using UnityEngine.UI;
 
 public class Menu
 {
-    #region CreateLuaScript 生成Lua脚本
-    [MenuItem("YouYouTools/CreateLuaScript")]
-    public static void CreateLuaView()
+    #region Settings 宏设置
+    [MenuItem("悠游工具/宏设置(Settings)")]
+    public static void Settings()
     {
-        if (Selection.transforms.Length == 0)
-        {
-            return;
-        }
-
-        Transform trans = Selection.transforms[0];
-
-        LuaForm luaForm = trans.GetComponent<LuaForm>();
-        if (luaForm == null)
-        {
-            Debug.LogError("该UI上没有LuaForm脚本");
-            return;
-        }
-
-        string viewName = trans.gameObject.name;
-
-        StringBuilder sbr = new StringBuilder();
-
-        sbr.AppendFormat("function OnInit(userData)\n");
-        sbr.AppendFormat("\n");
-        sbr.AppendFormat("end\n");
-        sbr.AppendFormat("\n");
-        sbr.AppendFormat("function OnOpen(userData)\n");
-        sbr.AppendFormat("\n");
-        sbr.AppendFormat("end\n");
-        sbr.AppendFormat("\n");
-        sbr.AppendFormat("function OnClose()\n");
-        sbr.AppendFormat("\n");
-        sbr.AppendFormat("end\n");
-        sbr.AppendFormat("\n");
-        sbr.AppendFormat("function OnBeforDestroy()\n");
-        sbr.AppendFormat("\n");
-        sbr.AppendFormat("end");
-
-        string path = Application.dataPath + "/Download/xLuaLogic/Modules/Temp/" + viewName + ".bytes";
-
-        using (FileStream fs = new FileStream(path, FileMode.Create))
-        {
-            using (StreamWriter sw = new StreamWriter(fs))
-            {
-                sw.Write(sbr.ToString());
-            }
-        }
-        AssetDatabase.Refresh();
+        SettingsWindow win = (SettingsWindow)EditorWindow.GetWindow(typeof(SettingsWindow));
+        win.titleContent = new GUIContent("宏设置");
+        win.Show();
     }
     #endregion
 
+    #region AssetBundleMgr 资源管理
+    [MenuItem("悠游工具/资源管理/资源包管理(AssetBundleMgr)")]
+    public static void AssetBundleMgr()
+    {
+        AssetBundleWindow win = (AssetBundleWindow)EditorWindow.GetWindow(typeof(AssetBundleWindow));
+        win.titleContent = new GUIContent("资源包管理");
+        win.Show();
+    }
+    #endregion
 
     #region AssetBundleCopyToStreamingAsstes 初始资源拷贝到StreamingAsstes
-    [MenuItem("YouYouTools/资源管理/初始资源拷贝到StreamingAsstes")]
+    [MenuItem("悠游工具/资源管理/初始资源拷贝到StreamingAsstes")]
     public static void AssetBundleCopyToStreamingAsstes()
     {
         string toPath = Application.streamingAssetsPath + "/AssetBundles/";
@@ -173,7 +141,7 @@ public class Menu
     #endregion
 
     #region AssetBundleOpenPersistentDataPath 打开persistentDataPath
-    [MenuItem("YouYouTools/资源管理/打开persistentDataPath")]
+    [MenuItem("悠游工具/资源管理/打开persistentDataPath")]
     public static void AssetBundleOpenPersistentDataPath()
     {
         string output = Application.persistentDataPath;
@@ -185,7 +153,6 @@ public class Menu
         System.Diagnostics.Process.Start("explorer.exe", output);
     }
     #endregion
-
 
     [MenuItem("GameObject/UI/YouYouText", false, 2500)]
     private static void MakeYouYouText(MenuCommand menuCommand)

@@ -75,7 +75,7 @@ public static partial class ChapterListExt
         {
             return chapter.Value;
         }
-        return default;
+        return default(Chapter);
     }
 
     /// <summary>

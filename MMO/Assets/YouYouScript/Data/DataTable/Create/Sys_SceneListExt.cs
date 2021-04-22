@@ -75,7 +75,7 @@ public static partial class Sys_SceneListExt
         {
             return sys_scene.Value;
         }
-        return default;
+        return default(Sys_Scene);
     }
 
     /// <summary>

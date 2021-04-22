@@ -75,7 +75,7 @@ public static partial class Sys_StorySoundListExt
         {
             return sys_storysound.Value;
         }
-        return default;
+        return default(Sys_StorySound);
     }
 
     /// <summary>

@@ -20,13 +20,13 @@ public class TestTime : MonoBehaviour
             action = GameEntry.Time.CreateTimeAction();
 
             Debug.Log("创建了定时器 延迟10秒 间隔1秒 循环100次");
-            action.Init(timeName: "youyou1", delayTime: 10, 1f, 100, () =>
+            action.Init(timeName: "youyou1", delayTime: 10,interval: 1f,loop: 100,onStar: () =>
               {
                   Debug.Log("定时器开始运行");
-              }, (int loop) =>
+              },onUpdate :(int loop) =>
               {
                   Debug.Log("运行中 剩余次数=" + loop);
-              }, () =>
+              },onComplete: () =>
               {
                   Debug.Log("定时器运行完毕");
               }).Run();

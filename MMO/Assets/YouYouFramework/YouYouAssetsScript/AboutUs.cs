@@ -16,105 +16,105 @@ public class AboutUs : ScriptableObject
 
     [VerticalGroup("AboutUs/Split/Right")]
     [DisplayAsString]
-    [LabelText("¿ò¼ÜÃû³Æ")]
+    [LabelText("æ¡†æ¶åç§°")]
     [GUIColor(2, 6, 6, 1)]
     public string Name = "YouYouFramework";
 
     [PropertySpace(10)]
     [VerticalGroup("AboutUs/Split/Right")]
     [DisplayAsString]
-    [LabelText("°æ±¾ºÅ")]
+    [LabelText("ç‰ˆæœ¬å·")]
     public string Version = "1.1";
 
     [VerticalGroup("AboutUs/Split/Right")]
     //[DisplayAsString]
-    [LabelText("×÷Õß")]
-    public string Author = "ÖìÃ÷ĞÇ";
+    [LabelText("ä½œè€…")]
+    public string Author = "æœ±æ˜æ˜Ÿ";
 
     [VerticalGroup("AboutUs/Split/Right")]
     //[DisplayAsString]
-    [LabelText("ÁªÏµ·½Ê½")]
+    [LabelText("è”ç³»æ–¹å¼")]
     public string Contact = "zhumingxing@cyou-inc.com";
 
     [BoxGroup("Models")]
-    [Title("ºêÉèÖÃ", bold: false)]
+    [Title("å®è®¾ç½®", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string MacroSettings = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("²ÎÊıÉèÖÃ", bold: false)]
+    [Title("å‚æ•°è®¾ç½®", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string ParamsSettings = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("×ÊÔ´°üÉèÖÃ", bold: false)]
+    [Title("èµ„æºåŒ…è®¾ç½®", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string AssetBundleSettings = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("¶ÔÏó³Ø", bold: false)]
+    [Title("å¯¹è±¡æ± ", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string ObjectPool = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("ÓÎÏ·Èë¿Ú", bold: false)]
+    [Title("æ¸¸æˆå…¥å£", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string GameEntry = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("ÊÂ¼şÏµÍ³", bold: false)]
+    [Title("äº‹ä»¶ç³»ç»Ÿ", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string EventSystem = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("±í¸ñ¹ÜÀí", bold: false)]
+    [Title("è¡¨æ ¼ç®¡ç†", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string TableManager = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("Http¹ÜÀí", bold: false)]
+    [Title("Httpç®¡ç†", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string HttpManager = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("Socket¹ÜÀí", bold: false)]
+    [Title("Socketç®¡ç†", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string SocketManager = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("UI¿ò¼Ü", bold: false)]
+    [Title("UIæ¡†æ¶", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string UIManager = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("Lua¿ò¼Ü", bold: false)]
+    [Title("Luaæ¡†æ¶", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string LuaManager = "";
 
     [PropertySpace(10)]
     [BoxGroup("Models")]
-    [Title("ÉùÒô¹ÜÀí", bold: false)]
+    [Title("å£°éŸ³ç®¡ç†", bold: false)]
     [HideLabel]
     [MultiLineProperty]
     public string AudioManager = "";
