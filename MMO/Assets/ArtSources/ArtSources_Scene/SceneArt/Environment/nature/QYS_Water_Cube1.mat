@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: QYS_Water_Cube1
+  m_Shader: {fileID: 4800000, guid: 29bbf7294901f764992eddab3d8bbeb7, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2900
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: be9214cdf9fcbb44d8148d06c06d8fe4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap1:
+        m_Texture: {fileID: 2800000, guid: 39f00227175b86140825af0eb060c17d, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap2:
+        m_Texture: {fileID: 2800000, guid: 39f00227175b86140825af0eb060c17d, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionMap:
+        m_Texture: {fileID: 2800000, guid: d3125bfc67f570e4a90ecf4194e4d9c9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Fresnel:
+        m_Texture: {fileID: 2800000, guid: 7d05be27848af57458bb23c1addc7ef0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GroundMap:
+        m_Texture: {fileID: 2800000, guid: 8702c547d6f1c35489b0aad6c0c93cb0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Reflection:
+        m_Texture: {fileID: 2800000, guid: 6e3da5bdea30f6c48aa477f82abe5a98, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture1:
+        m_Texture: {fileID: 2800000, guid: 9bb73d26413861d4489c74ef1e37b89e, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2:
+        m_Texture: {fileID: 2800000, guid: af6b06a41a517e9479583774a409e309, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Bump1Speed: 0.2
+    - _Bump2Speed: 0.03
+    - _BumpDepth: 1.17
+    - _Cutoff: 0.5
+    - _DistortionPower: 0.005
+    - _DistortionSpeed: 0.2
+    - _Gloss: 0.81607145
+    - _MainAlpha: 1
+    - _MainTexSpeed: 0.24
+    - _Opacity: 0.81
+    - _RefScale: 1.5
+    - _ReflectPower: 0.53
+    - _Specular: 2
+    - _Texture2Speed: 0.2
+    - _WaveScale: 0.1
+    - _difScale: 4.3
+    m_Colors:
+    - _Color: {r: 0.22383219, g: 0.36023438, b: 0.44117647, a: 1}
+    - _Color1: {r: 0.45415226, g: 0.7194398, b: 0.77205884, a: 1}
+    - _WaveOffset: {r: 2, g: 2, b: -2, a: -2}
