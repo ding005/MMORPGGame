@@ -570,6 +570,8 @@ PlayerSettings:
   webGLLinkerTarget: 1
   scriptingDefineSymbols:
     1: ODIN_INSPECTOR
+    4: 
+    7: 
   platformArchitecture: {}
   scriptingBackend:
     Standalone: 1
