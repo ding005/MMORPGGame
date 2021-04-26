@@ -74,5 +74,6 @@ public class ExtMemoryStream : MemoryStream
         base.Read(arr, 0, len);
         return Encoding.UTF8.GetString(arr, 0, len);
     }
+
 }
 
