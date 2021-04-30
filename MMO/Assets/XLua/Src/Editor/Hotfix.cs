@@ -24,6 +24,10 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using System.Diagnostics;
+#if UNITY_2019
+using UnityEditor.Build;
+using UnityEditor.Build.Reporting;
+#endif
 #endif
 
 namespace XLua
@@ -467,9 +471,9 @@ namespace XLua
             {
                 invoke.Parameters.Add(new ParameterDefinition(self));
             }
-            foreach (var argType in argTypes)
+            for(int i = 0; i < argTypes.Count; i++)
             {
-                invoke.Parameters.Add(new ParameterDefinition(argType));
+                invoke.Parameters.Add(new ParameterDefinition(method.Parameters[i].Name, (method.Parameters[i].IsOut ? Mono.Cecil.ParameterAttributes.Out : Mono.Cecil.ParameterAttributes.None), argTypes[i]));
             }
             invoke.ImplAttributes = Mono.Cecil.MethodImplAttributes.Runtime;
             delegateDef.Methods.Add(invoke);
@@ -982,6 +986,15 @@ namespace XLua
                     }
                 }
             }
+
+            int offset = 0;
+            for (int i = 0; i < instructions.Count; i++)
+            {
+                var instruction = instructions[i];
+                instruction.Offset = offset;
+                offset += instruction.GetSize();
+            }
+
             for (int i = 0; i < instructions.Count; i++)
             {
                 var instruction = instructions[i];
@@ -1576,6 +1589,18 @@ namespace XLua
 
 namespace XLua
 {
+#if UNITY_2019
+    class MyCustomBuildProcessor : IPostBuildPlayerScriptDLLs
+    {
+        public int callbackOrder { get { return 0; } }
+        public void OnPostBuildPlayerScriptDLLs(BuildReport report)
+        {
+            var dir = Path.GetDirectoryName(report.files.Single(file => file.path.EndsWith("Assembly-CSharp.dll")).path);
+            Hotfix.HotfixInject(dir);
+        }
+    }
+#endif
+
     public static class Hotfix
     {
         static bool ContainNotAsciiChar(string s)
@@ -1590,9 +1615,16 @@ namespace XLua
             return false;
         }
 
+#if !UNITY_2019
         [PostProcessScene]
+#endif
         [MenuItem("XLua/Hotfix Inject In Editor", false, 3)]
         public static void HotfixInject()
+        {
+            HotfixInject("./Library/ScriptAssemblies");
+        }
+
+        public static void HotfixInject(string assemblyDir)
         {
             if (Application.isPlaying)
             {
@@ -1628,7 +1660,7 @@ namespace XLua
                 return;
             }
 
-            var assembly_csharp_path = "./Library/ScriptAssemblies/Assembly-CSharp.dll";
+            var assembly_csharp_path = Path.Combine(assemblyDir, "Assembly-CSharp.dll");
             var id_map_file_path = CSObjectWrapEditor.GeneratorConfig.common_path + "Resources/hotfix_id_map.lua.txt";
             var hotfix_cfg_in_editor = CSObjectWrapEditor.GeneratorConfig.common_path + "hotfix_cfg_in_editor.data";
 
@@ -1670,7 +1702,7 @@ namespace XLua
             var idMapFileNames = new List<string>();
             foreach (var injectAssemblyPath in injectAssemblyPaths)
             {
-                args[0] = injectAssemblyPath.Replace('\\', '/');
+                args[0] = Path.Combine(assemblyDir, Path.GetFileName(injectAssemblyPath));
                 if (ContainNotAsciiChar(args[0]))
                 {
                     throw new Exception("project path must contain only ascii characters");

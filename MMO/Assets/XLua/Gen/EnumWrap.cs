@@ -25,11 +25,13 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(typeof(XLuaTest.MyEnum), L, translator, null, null, null, null, null);
 			
 			Utils.BeginClassRegister(typeof(XLuaTest.MyEnum), L, null, 3, 0, 0);
+
             
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "E1", XLuaTest.MyEnum.E1);
             
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "E2", XLuaTest.MyEnum.E2);
             
+
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
             
             Utils.EndClassRegister(typeof(XLuaTest.MyEnum), L, translator);
@@ -47,6 +49,7 @@ namespace XLua.CSObjectWrap
 			
             else if(lua_type == LuaTypes.LUA_TSTRING)
             {
+
 			    if (LuaAPI.xlua_is_eq_str(L, 1, "E1"))
                 {
                     translator.PushXLuaTestMyEnum(L, XLuaTest.MyEnum.E1);
@@ -59,6 +62,7 @@ namespace XLua.CSObjectWrap
                 {
                     return LuaAPI.luaL_error(L, "invalid string for XLuaTest.MyEnum!");
                 }
+
             }
 			
             else
@@ -79,11 +83,13 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(typeof(Tutorial.TestEnum), L, translator, null, null, null, null, null);
 			
 			Utils.BeginClassRegister(typeof(Tutorial.TestEnum), L, null, 3, 0, 0);
+
             
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "E1", Tutorial.TestEnum.E1);
             
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "E2", Tutorial.TestEnum.E2);
             
+
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
             
             Utils.EndClassRegister(typeof(Tutorial.TestEnum), L, translator);
@@ -101,6 +107,7 @@ namespace XLua.CSObjectWrap
 			
             else if(lua_type == LuaTypes.LUA_TSTRING)
             {
+
 			    if (LuaAPI.xlua_is_eq_str(L, 1, "E1"))
                 {
                     translator.PushTutorialTestEnum(L, Tutorial.TestEnum.E1);
@@ -113,6 +120,7 @@ namespace XLua.CSObjectWrap
                 {
                     return LuaAPI.luaL_error(L, "invalid string for Tutorial.TestEnum!");
                 }
+
             }
 			
             else
@@ -133,11 +141,13 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(typeof(Tutorial.DerivedClass.TestEnumInner), L, translator, null, null, null, null, null);
 			
 			Utils.BeginClassRegister(typeof(Tutorial.DerivedClass.TestEnumInner), L, null, 3, 0, 0);
+
             
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "E3", Tutorial.DerivedClass.TestEnumInner.E3);
             
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "E4", Tutorial.DerivedClass.TestEnumInner.E4);
             
+
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
             
             Utils.EndClassRegister(typeof(Tutorial.DerivedClass.TestEnumInner), L, translator);
@@ -155,6 +165,7 @@ namespace XLua.CSObjectWrap
 			
             else if(lua_type == LuaTypes.LUA_TSTRING)
             {
+
 			    if (LuaAPI.xlua_is_eq_str(L, 1, "E3"))
                 {
                     translator.PushTutorialDerivedClassTestEnumInner(L, Tutorial.DerivedClass.TestEnumInner.E3);
@@ -167,6 +178,7 @@ namespace XLua.CSObjectWrap
                 {
                     return LuaAPI.luaL_error(L, "invalid string for Tutorial.DerivedClass.TestEnumInner!");
                 }
+
             }
 			
             else

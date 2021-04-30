@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					LuaArrAccessAPI gen_ret = new LuaArrAccessAPI();
+					var gen_ret = new LuaArrAccessAPI();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -112,7 +112,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.IntPtr _L = LuaAPI.lua_touserdata(L, 1);
                     
-                        int gen_ret = LuaArrAccessAPI.PinFunction( _L );
+                        var gen_ret = LuaArrAccessAPI.PinFunction( _L );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -162,7 +162,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        LuaArrAccess gen_ret = LuaArrAccessAPI.CreateLuaShareAccess(  );
+                        var gen_ret = LuaArrAccessAPI.CreateLuaShareAccess(  );
                         translator.Push(L, gen_ret);
                     
                     

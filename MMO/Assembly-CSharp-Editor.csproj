@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
     <Compile Include="Assets\XLua\Editor\ExampleConfig.cs" />
+    <Compile Include="Assets\XLua\Examples\13_BuildFromCLI\Editor\BuildFromCLI.cs" />
     <Compile Include="Assets\XLua\Src\Editor\Generator.cs" />
     <Compile Include="Assets\XLua\Src\Editor\Hotfix.cs" />
     <Compile Include="Assets\XLua\Src\Editor\LinkXmlGen\LinkXmlGen.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets\YouYouFramework\Editor\AssetBundle\AssetBundleDAL.cs" />
     <Compile Include="Assets\YouYouFramework\Editor\AssetBundle\AssetBundleEntity.cs" />
     <Compile Include="Assets\YouYouFramework\Editor\AssetBundle\AssetBundleWindow.cs" />
+    <Compile Include="Assets\YouYouFramework\Editor\AssetBundleUtil.cs" />
     <Compile Include="Assets\YouYouFramework\Editor\Dll2LuaLib_v1.4\DllToLuaLib.cs" />
     <Compile Include="Assets\YouYouFramework\Editor\Dll2LuaLib_v1.4\XluaNameSpaceMap.cs" />
     <Compile Include="Assets\YouYouFramework\Editor\PathologicalGames\Common\PGEditorUtils.cs" />

@@ -28,7 +28,7 @@ namespace XLua
 			
 				translator.RegisterPushAndGetAndUpdate<XLuaTest.Pedding>(translator.PushXLuaTestPedding, translator.Get, translator.UpdateXLuaTestPedding);
 				translator.RegisterPushAndGetAndUpdate<XLuaTest.MyStruct>(translator.PushXLuaTestMyStruct, translator.Get, translator.UpdateXLuaTestMyStruct);
-				translator.RegisterPushAndGetAndUpdate<PushAsTableStruct>(translator.PushPushAsTableStruct, translator.Get, translator.UpdatePushAsTableStruct);
+				translator.RegisterPushAndGetAndUpdate<XLuaTest.PushAsTableStruct>(translator.PushXLuaTestPushAsTableStruct, translator.Get, translator.UpdateXLuaTestPushAsTableStruct);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Vector2>(translator.PushUnityEngineVector2, translator.Get, translator.UpdateUnityEngineVector2);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Vector3>(translator.PushUnityEngineVector3, translator.Get, translator.UpdateUnityEngineVector3);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Vector4>(translator.PushUnityEngineVector4, translator.Get, translator.UpdateUnityEngineVector4);
@@ -180,17 +180,18 @@ namespace XLua
             }
         }
         
-        int PushAsTableStruct_TypeID = -1;
-        public void PushPushAsTableStruct(RealStatePtr L, PushAsTableStruct val)
+        int XLuaTestPushAsTableStruct_TypeID = -1;
+        public void PushXLuaTestPushAsTableStruct(RealStatePtr L, XLuaTest.PushAsTableStruct val)
         {
-            if (PushAsTableStruct_TypeID == -1)
+            if (XLuaTestPushAsTableStruct_TypeID == -1)
             {
 			    bool is_first;
-                PushAsTableStruct_TypeID = getTypeId(L, typeof(PushAsTableStruct), out is_first);
+                XLuaTestPushAsTableStruct_TypeID = getTypeId(L, typeof(XLuaTest.PushAsTableStruct), out is_first);
 				
             }
 			
-			LuaAPI.xlua_pushcstable(L, 2, PushAsTableStruct_TypeID);
+			
+			LuaAPI.xlua_pushcstable(L, 2, XLuaTestPushAsTableStruct_TypeID);
 			
 			LuaAPI.xlua_pushasciistring(L, "x");
 			LuaAPI.xlua_pushinteger(L, val.x);
@@ -203,19 +204,19 @@ namespace XLua
 			
         }
 		
-        public void Get(RealStatePtr L, int index, out PushAsTableStruct val)
+        public void Get(RealStatePtr L, int index, out XLuaTest.PushAsTableStruct val)
         {
 		    LuaTypes type = LuaAPI.lua_type(L, index);
             if (type == LuaTypes.LUA_TUSERDATA )
             {
-			    if (LuaAPI.xlua_gettypeid(L, index) != PushAsTableStruct_TypeID)
+			    if (LuaAPI.xlua_gettypeid(L, index) != XLuaTestPushAsTableStruct_TypeID)
 				{
-				    throw new Exception("invalid userdata for PushAsTableStruct");
+				    throw new Exception("invalid userdata for XLuaTest.PushAsTableStruct");
 				}
 				
                 IntPtr buff = LuaAPI.lua_touserdata(L, index);if (!CopyByValue.UnPack(buff, 0, out val))
                 {
-                    throw new Exception("unpack fail for PushAsTableStruct");
+                    throw new Exception("unpack fail for XLuaTest.PushAsTableStruct");
                 }
             }
 			else if (type ==LuaTypes.LUA_TTABLE)
@@ -224,11 +225,11 @@ namespace XLua
 			}
             else
             {
-                val = (PushAsTableStruct)objectCasters.GetCaster(typeof(PushAsTableStruct))(L, index, null);
+                val = (XLuaTest.PushAsTableStruct)objectCasters.GetCaster(typeof(XLuaTest.PushAsTableStruct))(L, index, null);
             }
         }
 		
-        public void UpdatePushAsTableStruct(RealStatePtr L, int index, PushAsTableStruct val)
+        public void UpdateXLuaTestPushAsTableStruct(RealStatePtr L, int index, XLuaTest.PushAsTableStruct val)
         {
 		    
 			if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TTABLE)
@@ -1045,10 +1046,10 @@ namespace XLua
 				translator.PushXLuaTestMyStruct(L, array[index]);
 				return true;
 			}
-			else if (type == typeof(PushAsTableStruct[]))
+			else if (type == typeof(XLuaTest.PushAsTableStruct[]))
 			{
-			    PushAsTableStruct[] array = obj as PushAsTableStruct[];
-				translator.PushPushAsTableStruct(L, array[index]);
+			    XLuaTest.PushAsTableStruct[] array = obj as XLuaTest.PushAsTableStruct[];
+				translator.PushXLuaTestPushAsTableStruct(L, array[index]);
 				return true;
 			}
 			else if (type == typeof(UnityEngine.Vector2[]))
@@ -1135,9 +1136,9 @@ namespace XLua
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}
-			else if (type == typeof(PushAsTableStruct[]))
+			else if (type == typeof(XLuaTest.PushAsTableStruct[]))
 			{
-			    PushAsTableStruct[] array = obj as PushAsTableStruct[];
+			    XLuaTest.PushAsTableStruct[] array = obj as XLuaTest.PushAsTableStruct[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}

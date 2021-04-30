@@ -16,7 +16,7 @@ namespace XLua
     public partial class DelegateBridge : DelegateBridgeBase
     {
 		
-		public InvokeLua.ICalc __Gen_Delegate_Imp0(int p0, string[] p1)
+		public XLuaTest.InvokeLua.ICalc __Gen_Delegate_Imp0(int p0, string[] p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -31,7 +31,7 @@ namespace XLua
                 PCall(L, 1 + (p1 == null ? 0 : p1.Length), 1, errFunc);
                 
                 
-                InvokeLua.ICalc __gen_ret = (InvokeLua.ICalc)translator.GetObject(L, errFunc + 1, typeof(InvokeLua.ICalc));
+                XLuaTest.InvokeLua.ICalc __gen_ret = (XLuaTest.InvokeLua.ICalc)translator.GetObject(L, errFunc + 1, typeof(XLuaTest.InvokeLua.ICalc));
                 LuaAPI.lua_settop(L, errFunc - 1);
                 return  __gen_ret;
 #if THREAD_SAFE || HOTFIX_ENABLE
@@ -281,7 +281,7 @@ namespace XLua
 #endif
 		}
         
-		public int __Gen_Delegate_Imp12(int p0, string p1, out CSCallLua.DClass p2)
+		public int __Gen_Delegate_Imp12(int p0, string p1, out Tutorial.CSCallLua.DClass p2)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -295,7 +295,7 @@ namespace XLua
                 
                 PCall(L, 2, 2, errFunc);
                 
-                p2 = (CSCallLua.DClass)translator.GetObject(L, errFunc + 2, typeof(CSCallLua.DClass));
+                p2 = (Tutorial.CSCallLua.DClass)translator.GetObject(L, errFunc + 2, typeof(Tutorial.CSCallLua.DClass));
                 
                 int __gen_ret = LuaAPI.xlua_tointeger(L, errFunc + 1);
                 LuaAPI.lua_settop(L, errFunc - 1);
@@ -561,7 +561,7 @@ namespace XLua
 #endif
 		}
         
-		public UnityEngine.GameObject __Gen_Delegate_Imp24(StructTest p0, int p1, object p2)
+		public UnityEngine.GameObject __Gen_Delegate_Imp24(XLuaTest.StructTest p0, int p1, object p2)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -585,7 +585,7 @@ namespace XLua
 #endif
 		}
         
-		public string __Gen_Delegate_Imp25(StructTest p0)
+		public string __Gen_Delegate_Imp25(XLuaTest.StructTest p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -607,7 +607,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp26(StructTest p0, object p1)
+		public void __Gen_Delegate_Imp26(XLuaTest.StructTest p0, object p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -778,9 +778,9 @@ namespace XLua
 		public override Delegate GetDelegateByType(Type type)
 		{
 		
-		    if (type == typeof(InvokeLua.CalcNew))
+		    if (type == typeof(XLuaTest.InvokeLua.CalcNew))
 			{
-			    return new InvokeLua.CalcNew(__Gen_Delegate_Imp0);
+			    return new XLuaTest.InvokeLua.CalcNew(__Gen_Delegate_Imp0);
 			}
 		
 		    if (type == typeof(XLuaTest.IntParam))
@@ -858,14 +858,14 @@ namespace XLua
 			    return new System.Action<double>(__Gen_Delegate_Imp11);
 			}
 		
-		    if (type == typeof(CSCallLua.FDelegate))
+		    if (type == typeof(Tutorial.CSCallLua.FDelegate))
 			{
-			    return new CSCallLua.FDelegate(__Gen_Delegate_Imp12);
+			    return new Tutorial.CSCallLua.FDelegate(__Gen_Delegate_Imp12);
 			}
 		
-		    if (type == typeof(CSCallLua.GetE))
+		    if (type == typeof(Tutorial.CSCallLua.GetE))
 			{
-			    return new CSCallLua.GetE(__Gen_Delegate_Imp13);
+			    return new Tutorial.CSCallLua.GetE(__Gen_Delegate_Imp13);
 			}
 		
 		    if (type == typeof(YouYou.CommonEvent.OnActionHandler))

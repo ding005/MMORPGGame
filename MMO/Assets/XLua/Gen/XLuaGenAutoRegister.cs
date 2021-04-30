@@ -22,7 +22,7 @@ namespace XLua.CSObjectWrap
         static void wrapInit0(LuaEnv luaenv, ObjectTranslator translator)
         {
         
-            translator.DelayWrapLoader(typeof(LuaBehaviour), LuaBehaviourWrap.__Register);
+            translator.DelayWrapLoader(typeof(XLuaTest.LuaBehaviour), XLuaTestLuaBehaviourWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(XLuaTest.Pedding), XLuaTestPeddingWrap.__Register);
@@ -43,25 +43,25 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(UnityEngine.WWW), UnityEngineWWWWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(BaseTest), BaseTestWrap.__Register);
+            translator.DelayWrapLoader(typeof(XLuaTest.BaseTest), XLuaTestBaseTestWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(Foo1Parent), Foo1ParentWrap.__Register);
+            translator.DelayWrapLoader(typeof(XLuaTest.Foo1Parent), XLuaTestFoo1ParentWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(Foo2Parent), Foo2ParentWrap.__Register);
+            translator.DelayWrapLoader(typeof(XLuaTest.Foo2Parent), XLuaTestFoo2ParentWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(Foo1Child), Foo1ChildWrap.__Register);
+            translator.DelayWrapLoader(typeof(XLuaTest.Foo1Child), XLuaTestFoo1ChildWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(Foo2Child), Foo2ChildWrap.__Register);
+            translator.DelayWrapLoader(typeof(XLuaTest.Foo2Child), XLuaTestFoo2ChildWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(Foo), FooWrap.__Register);
+            translator.DelayWrapLoader(typeof(XLuaTest.Foo), XLuaTestFooWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(FooExtension), FooExtensionWrap.__Register);
+            translator.DelayWrapLoader(typeof(XLuaTest.FooExtension), XLuaTestFooExtensionWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(object), SystemObjectWrap.__Register);
@@ -229,13 +229,13 @@ namespace XLua.CSObjectWrap
             wrapInit1(luaenv, translator);
             
             
-            translator.AddInterfaceBridgeCreator(typeof(InvokeLua.ICalc), InvokeLuaICalcBridge.__Create);
+            translator.AddInterfaceBridgeCreator(typeof(XLuaTest.InvokeLua.ICalc), XLuaTestInvokeLuaICalcBridge.__Create);
             
             translator.AddInterfaceBridgeCreator(typeof(XLuaTest.IExchanger), XLuaTestIExchangerBridge.__Create);
             
             translator.AddInterfaceBridgeCreator(typeof(System.Collections.IEnumerator), SystemCollectionsIEnumeratorBridge.__Create);
             
-            translator.AddInterfaceBridgeCreator(typeof(CSCallLua.ItfD), CSCallLuaItfDBridge.__Create);
+            translator.AddInterfaceBridgeCreator(typeof(Tutorial.CSCallLua.ItfD), TutorialCSCallLuaItfDBridge.__Create);
             
         }
         

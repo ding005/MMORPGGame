@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using XLua;
-using YouYou;
 //using System.Reflection;
 //using System.Linq;
 
@@ -44,11 +43,12 @@ public static class ExampleGenConfig
                 typeof(ParticleSystem),
                 typeof(SkinnedMeshRenderer),
                 typeof(Renderer),
+                typeof(WWW),
                 typeof(Light),
                 typeof(Mathf),
                 typeof(System.Collections.Generic.List<int>),
                 typeof(Action<string>),
-                typeof(UnityEngine.Debug),
+                typeof(UnityEngine.Debug)
             };
 
     //C#静态调用Lua的配置（包括事件的原型），仅可以配delegate，interface
@@ -59,7 +59,7 @@ public static class ExampleGenConfig
                 typeof(Action<string>),
                 typeof(Action<double>),
                 typeof(UnityEngine.Events.UnityAction),
-                typeof(System.Collections.IEnumerator),
+                typeof(System.Collections.IEnumerator)
             };
 
     //黑名单
@@ -75,9 +75,6 @@ public static class ExampleGenConfig
                 new List<string>(){"UnityEngine.CanvasRenderer", "onRequestRebuild"},
                 new List<string>(){"UnityEngine.Light", "areaSize"},
                 new List<string>(){"UnityEngine.Light", "lightmapBakeType"},
-                new List<string>(){"UnityEngine.Light", "shadowRadius"},
-                new List<string>(){"UnityEngine.Light", "shadowAngle"},
-                new List<string>(){"UnityEngine.Light", "SetLightDirty"},
                 new List<string>(){"UnityEngine.WWW", "MovieTexture"},
                 new List<string>(){"UnityEngine.WWW", "GetMovieTexture"},
                 new List<string>(){"UnityEngine.AnimatorOverrideController", "PerformOverrideClipListCleanup"},

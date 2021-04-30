@@ -3,18 +3,18 @@
 <linker>
 
 	<assembly fullname="Assembly-CSharp">
-	    <type fullname="LuaBehaviour" preserve="all"/>
+	    <type fullname="XLuaTest.LuaBehaviour" preserve="all"/>
 		<type fullname="XLuaTest.Pedding" preserve="all"/>
 		<type fullname="XLuaTest.MyStruct" preserve="all"/>
 		<type fullname="XLuaTest.MyEnum" preserve="all"/>
 		<type fullname="XLuaTest.NoGc" preserve="all"/>
-		<type fullname="BaseTest" preserve="all"/>
-		<type fullname="Foo1Parent" preserve="all"/>
-		<type fullname="Foo2Parent" preserve="all"/>
-		<type fullname="Foo1Child" preserve="all"/>
-		<type fullname="Foo2Child" preserve="all"/>
-		<type fullname="Foo" preserve="all"/>
-		<type fullname="FooExtension" preserve="all"/>
+		<type fullname="XLuaTest.BaseTest" preserve="all"/>
+		<type fullname="XLuaTest.Foo1Parent" preserve="all"/>
+		<type fullname="XLuaTest.Foo2Parent" preserve="all"/>
+		<type fullname="XLuaTest.Foo1Child" preserve="all"/>
+		<type fullname="XLuaTest.Foo2Child" preserve="all"/>
+		<type fullname="XLuaTest.Foo" preserve="all"/>
+		<type fullname="XLuaTest.FooExtension" preserve="all"/>
 		<type fullname="Tutorial.BaseClass" preserve="all"/>
 		<type fullname="Tutorial.TestEnum" preserve="all"/>
 		<type fullname="Tutorial.DerivedClass" preserve="all"/>

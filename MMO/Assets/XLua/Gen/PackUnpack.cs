@@ -147,9 +147,9 @@ namespace XLua
         }
         
 		
-		public static void UnPack(ObjectTranslator translator, RealStatePtr L, int idx, out PushAsTableStruct val)
+		public static void UnPack(ObjectTranslator translator, RealStatePtr L, int idx, out XLuaTest.PushAsTableStruct val)
 		{
-		    val = new PushAsTableStruct();
+		    val = new XLuaTest.PushAsTableStruct();
             int top = LuaAPI.lua_gettop(L);
 			
 			if (Utils.LoadField(L, idx, "x"))
@@ -170,7 +170,7 @@ namespace XLua
 			
 		}
 		
-        public static bool Pack(IntPtr buff, int offset, PushAsTableStruct field)
+        public static bool Pack(IntPtr buff, int offset, XLuaTest.PushAsTableStruct field)
         {
             
             if(!Pack(buff, offset, field.x))
@@ -185,9 +185,9 @@ namespace XLua
             
             return true;
         }
-        public static bool UnPack(IntPtr buff, int offset, out PushAsTableStruct field)
+        public static bool UnPack(IntPtr buff, int offset, out XLuaTest.PushAsTableStruct field)
         {
-            field = default(PushAsTableStruct);
+            field = default(XLuaTest.PushAsTableStruct);
             
             if(!UnPack(buff, offset, out field.x))
             {

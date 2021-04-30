@@ -69,7 +69,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _value = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = StringUtil.IsNullOrEmpty( _value );
+                        var gen_ret = StringUtil.IsNullOrEmpty( _value );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -94,7 +94,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _str = LuaAPI.lua_tostring(L, 1);
                     
-                        int gen_ret = StringUtil.ToInt( _str );
+                        var gen_ret = StringUtil.ToInt( _str );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _str = LuaAPI.lua_tostring(L, 1);
                     
-                        long gen_ret = StringUtil.ToLong( _str );
+                        var gen_ret = StringUtil.ToLong( _str );
                         LuaAPI.lua_pushint64(L, gen_ret);
                     
                     
@@ -144,7 +144,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _str = LuaAPI.lua_tostring(L, 1);
                     
-                        float gen_ret = StringUtil.ToFloat( _str );
+                        var gen_ret = StringUtil.ToFloat( _str );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     

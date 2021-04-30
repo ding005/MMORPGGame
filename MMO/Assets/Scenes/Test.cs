@@ -14,8 +14,8 @@ public class Test : MonoBehaviour {
     public RectTransform image2;
 	// Use this for initialization
 	void Start () {
-        Debug.Log(image1.GetComponent<Image>().material.renderQueue);
-        Debug.Log(image2.GetComponent<Image>().material.renderQueue);
+        //Debug.Log(image1.GetComponent<Image>().material.renderQueue);
+        //Debug.Log(image2.GetComponent<Image>().material.renderQueue);
         
     }
 	
