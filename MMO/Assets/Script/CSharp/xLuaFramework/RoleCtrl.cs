@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class RoleCtrl : MonoBehaviour {
 
     //不赋值 默认的是vector3.zero
-    public Vector3 m_targetPos;
+    public Vector3 m_TargetPos;
 
     //CharacterController 一个特殊的刚体
     private CharacterController m_CharacterController;
@@ -42,6 +42,7 @@ public class RoleCtrl : MonoBehaviour {
 
     void Update()
     {
+        if (m_CharacterController == null) return;
         if (Input.GetMouseButtonUp(0))
         {
             Debug.Log("鼠标位置 == "+ Input.mousePosition);
@@ -53,14 +54,14 @@ public class RoleCtrl : MonoBehaviour {
                 //CurrentCultureIgnoreCase 不区分大小写
                 if (hitinfo.collider.gameObject.name.Equals("Ground", System.StringComparison.CurrentCultureIgnoreCase))
                 {
-                    m_targetPos = hitinfo.point;
+                    m_TargetPos = hitinfo.point;
                     //Debug.DrawLine(Camera.main.transform.position, m_targetPos);
                 }
             }
         }
-        if (m_targetPos != Vector3.zero)
+        if (m_TargetPos != Vector3.zero)
         {
-            Debug.DrawLine(Camera.main.transform.position, m_targetPos);
+            Debug.DrawLine(Camera.main.transform.position, m_TargetPos);
         }
         //让角色贴着地面
         if (!m_CharacterController.isGrounded)
@@ -69,19 +70,18 @@ public class RoleCtrl : MonoBehaviour {
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= m_Speed;
         }
-        if (m_targetPos != Vector3.zero)
+        if (m_TargetPos != Vector3.zero || m_CharacterController.isGrounded)
         {
             //不能是零 因为移动的时候有小数 导致来回颤动
-            if (Vector3.Distance(m_targetPos, transform.position) > 0.1f)
+            if (Vector3.Distance(m_TargetPos, transform.position) > 0.1f)
             {
-
-                Vector3 director = m_targetPos - transform.position;
+                Vector3 director = m_TargetPos - transform.position;
                 director = director.normalized; //归一化 方向上x y z长度为1
                 director = director * Time.deltaTime * m_Speed;
-                //transform.LookAt(m_targetPos, Vector3.up);
-                m_CharacterController.Move(m_targetPos);
+                //transform.LookAt(m_TargetPos, Vector3.up);
+                Debug.Log("director == " + director);
+                m_CharacterController.Move(director);
             }
-
         }
         moveDirection.y -= gravity * Time.deltaTime;//模拟重力
         m_CharacterController.Move(moveDirection * Time.deltaTime);//移动
