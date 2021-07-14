@@ -18,7 +18,7 @@ public class RoleCtrl : MonoBehaviour {
     private CharacterController m_CharacterController;
 
     [SerializeField]
-    private float m_Speed = 1;
+    private float m_Speed = 10;
 
     /// <summary>
     /// 转身速度
@@ -31,7 +31,12 @@ public class RoleCtrl : MonoBehaviour {
     /// </summary>
     private Quaternion m_Quaternion;
 
-    private float gravity = 20f;
+    /// <summary>
+    /// 是否转身完成
+    /// </summary>
+    private bool m_RotationOver = false;
+
+    private float gravity = 200f;
 
     private Vector3 moveDirection = Vector3.zero;
 
@@ -55,6 +60,8 @@ public class RoleCtrl : MonoBehaviour {
                 if (hitinfo.collider.gameObject.name.Equals("Ground", System.StringComparison.CurrentCultureIgnoreCase))
                 {
                     m_TargetPos = hitinfo.point;
+                    m_RotationOver = false;
+                    m_RotationSpeed = 0;
                     //Debug.DrawLine(Camera.main.transform.position, m_targetPos);
                 }
             }
@@ -70,7 +77,7 @@ public class RoleCtrl : MonoBehaviour {
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= m_Speed;
         }
-        if (m_TargetPos != Vector3.zero || m_CharacterController.isGrounded)
+        if (m_TargetPos != Vector3.zero && m_CharacterController.isGrounded)
         {
             //不能是零 因为移动的时候有小数 导致来回颤动
             if (Vector3.Distance(m_TargetPos, transform.position) > 0.1f)
@@ -78,8 +85,21 @@ public class RoleCtrl : MonoBehaviour {
                 Vector3 director = m_TargetPos - transform.position;
                 director = director.normalized; //归一化 方向上x y z长度为1
                 director = director * Time.deltaTime * m_Speed;
+                //director.y = 0;
                 //transform.LookAt(m_TargetPos, Vector3.up);
-                Debug.Log("director == " + director);
+                //transform.LookAt(new Vector3(m_TargetPos.x , transform.position.y, m_TargetPos.z));
+                m_Quaternion = Quaternion.LookRotation(director);
+
+                if (!m_RotationOver)
+                {
+                    m_RotationSpeed += 5f;
+                    transform.rotation = Quaternion.Lerp(transform.rotation, m_Quaternion, Time.deltaTime * m_RotationSpeed);
+                    if (Quaternion.Angle(transform.rotation, m_Quaternion) < 1f)
+                    {
+                        m_RotationSpeed = 1;
+                        m_RotationOver = true;
+                    }
+                }
                 m_CharacterController.Move(director);
             }
         }
